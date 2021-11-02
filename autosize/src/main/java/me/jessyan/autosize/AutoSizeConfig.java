@@ -163,7 +163,7 @@ public final class AutoSizeConfig {
     /**
      * 设置是否只适配当前自己的包名下的界面，不适配以外的所有第三方
      */
-    boolean isAdapterSelf;
+    public boolean isAdapterSelf=true;
 
     static {
         DEPENDENCY_ANDROIDX = findClassByClassName("androidx.fragment.app.FragmentActivity");
