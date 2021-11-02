@@ -49,7 +49,7 @@ public final class AutoSizeConfig {
     private static final String KEY_DESIGN_HEIGHT_IN_DP = "design_height_in_dp";
     public static final boolean DEPENDENCY_ANDROIDX;
     public static final boolean DEPENDENCY_SUPPORT;
-    private Application mApplication;
+    protected Application mApplication;
     /**
      * 用来管理外部三方库 {@link Activity} 的适配
      */
@@ -159,6 +159,11 @@ public final class AutoSizeConfig {
      * 屏幕适配监听器，用于监听屏幕适配时的一些事件
      */
     private onAdaptListener mOnAdaptListener;
+
+    /**
+     * 设置是否只适配当前自己的包名下的界面，不适配以外的所有第三方
+     */
+    boolean isAdapterSelf;
 
     static {
         DEPENDENCY_ANDROIDX = findClassByClassName("androidx.fragment.app.FragmentActivity");

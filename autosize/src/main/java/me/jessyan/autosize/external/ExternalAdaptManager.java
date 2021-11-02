@@ -39,6 +39,7 @@ import me.jessyan.autosize.utils.Preconditions;
  */
 public class ExternalAdaptManager {
     private List<String> mCancelAdaptList;
+    private List<String> mCancelAdaptPackageList;
     private Map<String, ExternalAdaptInfo> mExternalAdaptInfos;
     private boolean isRun;
 
@@ -59,6 +60,26 @@ public class ExternalAdaptManager {
             mCancelAdaptList = new ArrayList<>();
         }
         mCancelAdaptList.add(targetClass.getCanonicalName());
+        return this;
+    }
+
+    /**
+     * 将不需要适配的第三方库 的包名或者路径 添加进来 (但不局限于三方库), 即可让该 {@link Activity} 的适配效果失效
+     * <p>
+     * 支持链式调用, 如:
+     * {@link ExternalAdaptManager#addCancelAdaptOfActivity(Class)#addCancelAdaptOfActivity(Class)}
+     *
+     * @param targetClass {@link Activity} class, Fragment class
+     */
+    public synchronized ExternalAdaptManager addCancelAdaptOfPackage(Class<?> targetClass) {
+        Preconditions.checkNotNull(targetClass, "targetClass == null");
+        if (!isRun) {
+            isRun = true;
+        }
+        if (mCancelAdaptPackageList == null) {
+            mCancelAdaptPackageList = new ArrayList<>();
+        }
+        mCancelAdaptPackageList.add(targetClass.getCanonicalName());
         return this;
     }
 
@@ -104,6 +125,20 @@ public class ExternalAdaptManager {
             return false;
         }
         return mCancelAdaptList.contains(targetClass.getCanonicalName());
+    }
+
+    /**
+     * 这个 {@link Activity} 是否存在在取消适配的列表中, 如果在, 则该 {@link Activity} 适配失效
+     *
+     * @param targetClass {@link Activity} class, Fragment class
+     * @return {@code true} 为存在, {@code false} 为不存在
+     */
+    public synchronized boolean isCancelPackageAdapt(Class<?> targetClass) {
+        Preconditions.checkNotNull(targetClass, "targetClass == null");
+        if (mCancelAdaptPackageList == null) {
+            return false;
+        }
+        return mCancelAdaptPackageList.equals(targetClass.getPackage().getName());
     }
 
     /**
