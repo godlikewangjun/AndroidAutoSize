@@ -9,7 +9,6 @@ android {
         targetSdkVersion rootProject.targetSdkVersion
         versionCode rootProject.versionCode
         versionName rootProject.versionName
-        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
     namespace 'me.jessyan.autosize.demo'
     buildTypes {
@@ -24,5 +23,4 @@ dependencies {
 //    implementation 'me.jessyan:autosize:1.2.1'
     implementation project(':autosize')
     implementation 'cat.ereza:customactivityoncrash:2.2.0'
-    testImplementation 'junit:junit:4.12'
 }

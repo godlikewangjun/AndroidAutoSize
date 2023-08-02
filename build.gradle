@@ -2,19 +2,16 @@
 
 buildscript {
     repositories {
-        mavenCentral()
         google()
+        mavenCentral()
     }
     dependencies {
         classpath 'com.android.tools.build:gradle:8.0.2'
-        // NOTE: Do not place your application dependencies here; they belong
-        // in the individual module build.gradle files
     }
 }
 
 allprojects {
     repositories {
-        maven { url "https://raw.githubusercontent.com/Pgyer/mvn_repo_pgyer/master" }
         mavenCentral()
         google()
     }
@@ -25,7 +22,7 @@ task clean(type: Delete) {
 }
 
 ext {
-    minSdkVersion = 14
+    minSdkVersion = 23
     targetSdkVersion = 31
     compileSdkVersion = 31
     versionCode = 41
