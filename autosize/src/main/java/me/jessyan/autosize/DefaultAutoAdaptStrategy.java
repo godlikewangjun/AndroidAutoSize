@@ -43,7 +43,7 @@ public class DefaultAutoAdaptStrategy implements AutoAdaptStrategy {
         //如果开启了只适配自己包名的额界面则不需要判断过滤的参数配置
         if (AutoSizeConfig.getInstance().isAdapterSelf){
             //本app下的包名
-            if (activity.getApplication().getPackageName().equals(AutoSizeConfig.getInstance().mApplication.getPackageName())){
+            if (!activity.getLocalClassName().contains(".")){
                 ExternalAdaptInfo info = AutoSizeConfig.getInstance().getExternalAdaptManager()
                         .getExternalAdaptInfoOfActivity(target.getClass());
                 if (info != null) {
