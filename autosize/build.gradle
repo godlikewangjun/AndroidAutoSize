@@ -39,3 +39,5 @@ android {
 dependencies {
     compileOnly rootProject.androidx_appcompat
 }
+
+apply from: "bintray.gradle"
