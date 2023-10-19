@@ -24,8 +24,8 @@ task clean(type: Delete) {
 
 ext {
     minSdkVersion = 23
-    targetSdkVersion = 31
-    compileSdkVersion = 31
+    targetSdkVersion = 33
+    compileSdkVersion = 33
     versionCode = 41
     versionName = "1.0.0"
     androidx_appcompat = 'androidx.appcompat:appcompat:1.6.1'

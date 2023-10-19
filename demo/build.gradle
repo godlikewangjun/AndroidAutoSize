@@ -22,5 +22,6 @@ android {
 dependencies {
 //    implementation 'me.jessyan:autosize:1.2.1'
     implementation project(':autosize')
-    implementation 'cat.ereza:customactivityoncrash:2.2.0'
+    implementation rootProject.androidx_appcompat
+    implementation 'androidx.swiperefreshlayout:swiperefreshlayout:1.1.0'
 }

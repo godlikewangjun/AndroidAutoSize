@@ -20,12 +20,11 @@ import android.app.Dialog;
 import android.app.Fragment;
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Toast;
 
-import cat.ereza.customactivityoncrash.activity.DefaultErrorActivity;
-import cat.ereza.customactivityoncrash.config.CaocConfig;
+import androidx.appcompat.app.AppCompatActivity;
+
 import me.jessyan.autosize.AutoSizeConfig;
 import me.jessyan.autosize.internal.CustomAdapt;
 
@@ -35,7 +34,7 @@ import me.jessyan.autosize.internal.CustomAdapt;
  * 此方案不光可以适配 {@link Activity}, 这个 {@link Activity} 下的所有 {@link Fragment}、{@link Dialog}、{@link View} 都会自动适配
  * <p>
  * {@link MainActivity} 是以屏幕宽度为基准进行适配的, 并且使用的是在 AndroidManifest 中填写的全局设计图尺寸 360 * 640
- * 不懂什么叫基准的话, 请看 {@link AutoSizeConfig#isBaseOnWidth}) 的注释, AndroidAutoSize 默认全局以屏幕宽度为基准进行适配
+ * 不懂什么叫基准的话, 请看 ) 的注释, AndroidAutoSize 默认全局以屏幕宽度为基准进行适配
  * 如果想更改为全局以屏幕高度为基准进行适配, 请在 {@link BaseApplication} 中按注释中更改, 为什么强调全局？
  * 因为 AndroidAutoSize 允许每个 {@link Activity} 可以自定义适配参数, 自定义适配参数通过实现 {@link CustomAdapt}
  * 如果不自定义适配参数就会使用全局的适配参数, 全局适配参数在 {@link BaseApplication} 中按注释设置
@@ -88,17 +87,10 @@ public class MainActivity extends AppCompatActivity {
 
     /**
      * 跳转到三方库的 {@link Activity}, 展示项目外部某些三方库的 {@link Activity} 自定义适配参数的用法
-     * 跳转前要先在 {@link BaseApplication#customAdaptForExternal()} 中给外部的三方库 {@link Activity} 自定义适配参数
+     * 跳转前要先在  中给外部的三方库 {@link Activity} 自定义适配参数
      *
      * @param view {@link View}
      */
     public void goThirdLibraryActivity(View view) {
-        //这里就是随便找个三方库的 Activity, 测试下适配三方库页面的功能是否可用
-        //以下代码就是为了启动这个三方库的 Activity, 不必在意
-        Intent intent = new Intent(getApplicationContext(), DefaultErrorActivity.class);
-        Bundle extras = new Bundle();
-        extras.putSerializable("cat.ereza.customactivityoncrash.EXTRA_CONFIG", CaocConfig.Builder.create().get());
-        intent.putExtras(extras);
-        startActivity(intent);
     }
 }
